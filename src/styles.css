@@ -1,1 +1,108 @@
-/* You can add global styles to this file, and also import other style files */
+/* 
+    ============================================================
+    FAZENDA SANTA TEREZINHA — Design Tokens Globais
+    ============================================================ 
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --fst-color-primary: #2C3B2D;
+  --fst-color-secondary: #4A5C3A;
+  --fst-color-tertiary: #9BAF88;
+  --fst-color-accent: #8B6340;
+  --fst-color-highlight: #C8A96E;
+  --fst-color-bg-primary: #F5EDD9;
+  --fst-color-bg-secondary: #E8D9B8;
+  --fst-color-bg-tertiary: #5C3D1E;
+  
+  --fst-font-primary: 'Cormorant Garamond', Georgia, serif;
+  --fst-font-secondary: 'Jost', system-ui, sans-serif;
+  
+  --fst-transition-base: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: var(--fst-font-secondary);
+  background-color: var(--fst-color-bg-primary);
+  color: var(--fst-color-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fst-font-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color var(--fst-transition-base);
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all var(--fst-transition-base);
+}
+
+/* Global Utility Classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.badge-pill {
+  display: inline-block;
+  background-color: var(--fst-color-tertiary);
+  color: white;
+  padding: 4px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 16px;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.title-accent {
+  color: var(--fst-color-accent);
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--fst-color-accent);
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  transition: all var(--fst-transition-base);
+}
+
+.btn-primary:hover {
+  background-color: var(--fst-color-highlight);
+  transform: translateY(-2px);
+}
