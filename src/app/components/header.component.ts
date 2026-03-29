@@ -45,13 +45,22 @@ import { Component, HostListener, signal } from '@angular/core';
       border-radius: 20px;
       width: 90%;
       z-index: 1000;
+      transition: all var(--fst-transition-base);
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(255, 255, 255, 0.05); 
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
-      transition: all var(--fst-transition-base);
+      border-radius: inherit;
       border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all var(--fst-transition-base);
+      z-index: -1;
+      pointer-events: none;
     }
-    header.scrolled {
+    header.scrolled::before {
       background: rgba(44, 59, 45, 0.85); /* var(--fst-color-primary) with opacity */
       backdrop-filter: blur(12px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.1);
@@ -118,6 +127,13 @@ import { Component, HostListener, signal } from '@angular/core';
         width: 100%;
         border-radius: 0;
         border: none;
+      }
+      header::before {
+        border-radius: 0;
+        border: none;
+        /* Fade out na borda inferior para mesclar com o background */
+        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
       }
       .navbar-collapse {
         background: var(--fst-color-primary);

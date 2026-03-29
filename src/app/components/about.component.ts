@@ -4,62 +4,90 @@ import { Component } from '@angular/core';
   selector: 'app-about',
   standalone: true,
   template: `
-    <section id="historia" class="future-agro-section">
-      <div class="container relative">
-        <!-- Decoration Holographic Circle -->
-        <div class="tech-circle"></div>
+    <div class="about-wrapper relative">
+      <div class="wave-divider">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="var(--fst-color-bg-primary)" fill-opacity="1" d="M0,64L80,69.3C160,75,320,85,480,122.7C640,160,800,224,960,218.7C1120,213,1280,139,1360,101.3L1440,64L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+        </svg>
+      </div>
 
-        <div class="about-grid">
-          
-          <!-- LEFT PANEL: Texts & Stats -->
-          <div class="about-text-panel">
-            <div class="tech-badge">
-              <span class="pulse-dot"></span> NOSSA HISTÓRIA
-            </div>
-            
-            <h2 class="gradient-title">Tradição e Inovação <span>no Agronegócio</span></h2>
-            
-            <p class="lead-tech">Desde o plantio da primeira semente, a Fazenda Santa Terezinha tem se destacado pela precisão e excelência em suas operações.</p>
-            
-            <p class="body-tech">
-              Guiados pelo compromisso com a terra e focados no futuro, adotamos as melhores práticas agrícolas globais, combinando nossa sabedoria tradicional com sistemas e inovações tecnológicas de ponta. O futuro do campo já começou aqui.
-            </p>
-            
-            <div class="stats-grid">
-              <div class="future-stat-box">
-                <p class="st-label">FUNDAÇÃO</p>
-                <p class="st-value">Dádiva da Terra</p>
-              </div>
-              <div class="future-stat-box">
-                <p class="st-label">FOCO</p>
-                <p class="st-value">Alta Performance Sustentável</p>
-              </div>
-            </div>
-          </div>
+      <section id="historia" class="future-agro-section">
+        <div class="container relative">
+          <!-- Decoration Holographic Circle -->
+          <div class="tech-circle"></div>
 
-          <!-- RIGHT PANEL: Glass Media -->
-          <div class="about-media">
-            <div class="media-container">
-              <img src="assets/media/gallery-2.jpg" alt="Visão da Fazenda" class="tech-img" />
+          <div class="about-grid">
+            
+            <!-- LEFT PANEL: Texts & Stats -->
+            <div class="about-text-panel">
+              <div class="tech-badge">
+                <span class="pulse-dot"></span> NOSSA HISTÓRIA
+              </div>
               
-              <!-- Tech glass HUD overlay -->
-              <div class="glass-overlay-metric">
-                <div class="metric-ring"></div>
-                <div class="metric-data">
-                  <strong>100%</strong>
-                  <span>Monitoramento Digital</span>
+              <h2 class="gradient-title">Tradição e Inovação <span>no Agronegócio</span></h2>
+              
+              <p class="lead-tech">Desde o plantio da primeira semente, a Fazenda Santa Terezinha tem se destacado pela precisão e excelência em suas operações.</p>
+              
+              <p class="body-tech">
+                Guiados pelo compromisso com a terra e focados no futuro, adotamos as melhores práticas agrícolas globais, combinando nossa sabedoria tradicional com sistemas e inovações tecnológicas de ponta. O futuro do campo já começou aqui.
+              </p>
+              
+              <div class="stats-grid">
+                <div class="future-stat-box">
+                  <p class="st-label">FUNDAÇÃO</p>
+                  <p class="st-value">Dádiva da Terra</p>
+                </div>
+                <div class="future-stat-box">
+                  <p class="st-label">FOCO</p>
+                  <p class="st-value">Alta Performance Sustentável</p>
                 </div>
               </div>
             </div>
-          </div>
 
+            <!-- RIGHT PANEL: Glass Media -->
+            <div class="about-media">
+              <div class="media-container">
+                <img src="assets/media/gallery-2.jpg" alt="Visão da Fazenda" class="tech-img" />
+                
+                <!-- Tech glass HUD overlay -->
+                <div class="glass-overlay-metric">
+                  <div class="metric-ring"></div>
+                  <div class="metric-data">
+                    <strong>100%</strong>
+                    <span>Monitoramento Digital</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   `,
   styles: [`
+    .about-wrapper {
+      position: relative;
+      background: var(--fst-color-bg-primary);
+    }
+    .wave-divider {
+      position: absolute;
+      bottom: calc(100% - 2px); /* Tira o buraco subpixel e gruda na borda real */
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      z-index: 15;
+    }
+    .wave-divider svg {
+      width: 100%;
+      height: 8vw;
+      min-height: 50px;
+      max-height: 120px;
+      display: block;
+      transform: translateY(1px);
+    }
     .future-agro-section {
-      padding: 120px 0;
+      padding: 60px 0 120px 0;
       position: relative;
       background: var(--fst-color-bg-primary); /* Marfim base */
       overflow: hidden;
