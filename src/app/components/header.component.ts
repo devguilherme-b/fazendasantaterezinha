@@ -26,6 +26,9 @@ import { Component, HostListener, signal } from '@angular/core';
                 <a class="nav-link" href="#estrutura">Estrutura</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#localizacao">Localização</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#fotos">Fotos</a>
               </li>
             </ul>

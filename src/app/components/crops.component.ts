@@ -13,8 +13,8 @@ import { Component } from '@angular/core';
           <div class="tech-badge mx-auto">
             <span class="pulse-dot"></span> ECOSSISTEMA PRODUTIVO
           </div>
-          <h2 class="gradient-title-light">Cafeicultura em <span>Alta Precisão</span></h2>
-          <p class="subtitle-tech">Infraestrutura tecnológica de ponta integrando dados desde o plantio até o processamento pós-colheita dos grãos.</p>
+          <h2 class="gradient-title-light">Excelência em <span>Larga Escala</span></h2>
+          <p class="subtitle-tech">Do preparo meticuloso do solo à secagem de precisão, nossa infraestrutura é desenhada para aliar expansão produtiva com consistência de qualidade.</p>
         </div>
         
         <div class="crops-glass-grid">
@@ -24,14 +24,14 @@ import { Component } from '@angular/core';
             <div class="card-image-wrapper">
               <img src="assets/media/gallery-4.jpg" alt="Campo de Café">
               <div class="hologram-overlay"></div>
-              <div class="status-tab"><span>LIVE</span> // MANEJO</div>
+              <div class="status-tab"><span>LIVE</span> // CAMPO / PRODUÇÃO</div>
             </div>
             <div class="card-tech-content">
               <div class="tech-icon-wrapper">
-                 <div class="tech-icon-hex">📡</div>
+                 <div class="tech-icon-hex">🚜</div>
               </div>
-              <h3>Manejo Preditivo</h3>
-              <p>Mapeamento contínuo da saúde dos cafeeiros via drones e sensores ópticos, assegurando nutrição exata, controle fitossanitário e zelo sustentável pelo solo.</p>
+              <h3>Manejo e Plantio Moderno</h3>
+              <p>Uso intensivo de mecanização e agricultura de precisão. Lavouras desenhadas em curva de nível para proteção do solo, com renovação contínua utilizando mudas sadias e tratos culturais rigorosos.</p>
               <a href="#historia" class="tech-link">Ver detalhes &rarr;</a>
             </div>
           </div>
@@ -39,16 +39,16 @@ import { Component } from '@angular/core';
           <!-- Card 2 -->
           <div class="glass-crop-card">
             <div class="card-image-wrapper">
-              <img src="assets/media/gallery-1.jpg" alt="Infraestrutura de Processamento">
+              <img src="assets/media/drone-processing.jpg" alt="Infraestrutura de Processamento">
               <div class="hologram-overlay"></div>
-              <div class="status-tab"><span class="blue-dot">SYS</span> // PÓS-COLHEITA</div>
+              <div class="status-tab"><span class="blue-dot">EST</span> // PÓS-COLHEITA / SECAGEM</div>
             </div>
             <div class="card-tech-content">
               <div class="tech-icon-wrapper">
                  <div class="tech-icon-hex">⚙️</div>
               </div>
-              <h3>Beneficiamento Ágil</h3>
-              <p>Planta de processamento 4.0 equipada com secadores de última geração e separação óptica gravimétrica para garantir a máxima qualidade em cada micromote de grãos especiais.</p>
+              <h3>Beneficiamento de Alta Capacidade</h3>
+              <p>Estrutura robusta contando com amplos terreiros pavimentados e uma bateria completa de grandes secadores mecânicos, garantindo fluxo contínuo e padronização para volumes expressivos de café.</p>
               <a href="#historia" class="tech-link">Ver detalhes &rarr;</a>
             </div>
           </div>

@@ -19,7 +19,7 @@ import { Component } from '@angular/core';
         
         <div class="hero-content-pure">
           <div class="tech-badge-inline">
-            <span class="pulse-dot"></span> CAFEICULTURA DE PRECISÃO
+            <span class="pulse-dot"></span> <span class="badge-text">CAFEICULTURA DE PRECISÃO</span>
           </div>
           
           <h1 class="future-title">O Futuro do Café<br><span class="highlight-text">Nasce Aqui</span></h1>
@@ -72,8 +72,8 @@ import { Component } from '@angular/core';
     .hero-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(90deg, rgba(15, 23, 18, 0.8) 0%, rgba(15, 23, 18, 0.4) 60%, rgba(15, 23, 18, 0) 100%),
-                  linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 20%);
+      background: linear-gradient(90deg, rgba(15, 23, 18, 0.95) 0%, rgba(15, 23, 18, 0.8) 45%, rgba(15, 23, 18, 0.1) 100%),
+                  linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 25%);
       z-index: 1;
     }
     
@@ -112,7 +112,8 @@ import { Component } from '@angular/core';
       position: relative;
       z-index: 10;
       width: 100%;
-      padding-top: 60px;
+      padding-top: 20px; /* Reduzido para subir o bloco */
+      padding-bottom: 15vh; /* Aumentado para empurrar bem para cima da onda */
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -138,12 +139,12 @@ import { Component } from '@angular/core';
       margin-bottom: 24px;
       padding-left: 20px;
     }
-    .tech-badge-inline span {
+    .tech-badge-inline .badge-text {
       font-family: var(--fst-font-secondary);
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 3px;
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.85); /* Clareado para máximo contraste */
       text-transform: uppercase;
     }
     .pulse-dot {
@@ -160,9 +161,9 @@ import { Component } from '@angular/core';
 
     .future-title {
       font-family: var(--fst-font-primary);
-      font-size: clamp(3.5rem, 6vw, 5.5rem);
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem); /* Diminui a escala horizontal do clamp */
       line-height: 1.05;
-      margin-bottom: 30px;
+      margin-bottom: 20px; /* Mais compacto */
       color: white;
       text-shadow: 0 10px 30px rgba(0,0,0,0.5);
       font-weight: 400;
@@ -179,17 +180,17 @@ import { Component } from '@angular/core';
       height: 2px;
       background: var(--fst-color-highlight);
       margin-left: 20px;
-      margin-bottom: 30px;
+      margin-bottom: 20px; /* Mais compacto */
       box-shadow: 0 0 10px rgba(200, 169, 110, 0.5);
     }
 
     .hero-lead {
       font-family: var(--fst-font-secondary);
-      font-size: 1.2rem;
+      font-size: 1.05rem; /* Fonte ligeiramente menor */
       font-weight: 300;
-      line-height: 1.7;
+      line-height: 1.6; /* Interlinha menor */
       color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 48px;
+      margin-bottom: 30px; /* Reduz a quebra até os botões */
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       padding-left: 20px;
     }

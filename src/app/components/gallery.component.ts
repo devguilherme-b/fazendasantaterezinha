@@ -26,7 +26,7 @@ import { Component } from '@angular/core';
              <div class="scanner-hud">
                 <span class="hud-corner tl"></span><span class="hud-corner tr"></span>
                 <span class="hud-corner bl"></span><span class="hud-corner br"></span>
-                <div class="hud-info">SETOR BRAVO // MATURAÇÃO</div>
+                <div class="hud-info">SEDE DA FAZENDA // SP</div>
              </div>
           </div>
           <div class="scanner-frame">
@@ -34,15 +34,26 @@ import { Component } from '@angular/core';
              <div class="scanner-hud">
                 <span class="hud-corner tl"></span><span class="hud-corner tr"></span>
                 <span class="hud-corner bl"></span><span class="hud-corner br"></span>
-                <div class="hud-info">SETOR CHARLIE // FLORAÇÃO</div>
+                <div class="hud-info">SEDE DA FAZENDA // SP</div>
              </div>
           </div>
           <div class="scanner-frame g-wide">
-             <img src="assets/media/gallery-4.jpg" alt="Mecanização na Colheita" class="gallery-img">
+             <img src="assets/media/gallery-5.jpeg" alt="Mecanização na Colheita" class="gallery-img">
              <div class="scanner-hud">
                 <span class="hud-corner tl"></span><span class="hud-corner tr"></span>
                 <span class="hud-corner bl"></span><span class="hud-corner br"></span>
                 <div class="hud-info">TELEMETRIA // MAPEAMENTO SUPERFÍCIE</div>
+             </div>
+          </div>
+
+          <div class="scanner-frame">
+             <video autoplay [muted]="true" loop playsinline class="gallery-img">
+                <source src="assets/media/drone-1.mp4" type="video/mp4">
+             </video>
+             <div class="scanner-hud">
+                <span class="hud-corner tl"></span><span class="hud-corner tr"></span>
+                <span class="hud-corner bl"></span><span class="hud-corner br"></span>
+                <div class="hud-info">SEDE DA FAZENDA // SP</div>
              </div>
           </div>
         </div>

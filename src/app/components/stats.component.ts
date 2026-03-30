@@ -16,7 +16,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
               <span class="pulse-dot"></span> REPORT DA SAFRA
             </div>
             <h2 class="section-title">Resultados em <span>Escala</span></h2>
-            <p class="section-subtitle">A união da precisão tecnológica com a vocação natural do cerrado produz números expressivos de ponta a ponta.</p>
+            <p class="section-subtitle">A união de um manejo agrícola de alto nível com a vocação natural do cerrado produz volumes expressivos e qualidade consistente safra após safra.</p>
           </div>
           
           <div class="carousel-controls">
@@ -31,48 +31,48 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
             
             <!-- Card 1 -->
             <div class="future-glass-card">
-              <div class="f-card-bg" style="background-image: url('assets/media/gallery-2.jpg');"></div>
+              <div class="f-card-bg" style="background-image: url('assets/media/drone-fields.jpg');"></div>
               <div class="f-card-overlay"></div>
               <div class="f-card-content">
-                <div class="f-icon-circle pulse-glow">🏆</div>
-                <div class="f-stat-title">84+ Pontos SCA</div>
-                <div class="f-stat-desc">Score médio alcançado, atestando a qualidade superior, doçura e notas frutadas dos nossos microlotes de café.</div>
-                <button class="f-btn-explore">Visualizar Laudos &rarr;</button>
+                <div class="f-icon-circle pulse-glow">📍</div>
+                <div class="f-stat-title">Extensão e Topografia</div>
+                <div class="f-stat-desc">Vastas áreas de plantio totalmente mecanizáveis e adaptadas ao relevo, assegurando alta eficiência operacional do plantio até a colheita.</div>
+                <button class="f-btn-explore">Ver a Fazenda &rarr;</button>
               </div>
             </div>
             
             <!-- Card 2 -->
             <div class="future-glass-card">
-              <div class="f-card-bg" style="background-image: url('assets/media/gallery-3.jpg');"></div>
+              <div class="f-card-bg" style="background-image: url('assets/media/factory-dryers.jpg');"></div>
               <div class="f-card-overlay"></div>
               <div class="f-card-content">
-                <div class="f-icon-circle pulse-glow">📍</div>
-                <div class="f-stat-title">Telemetria 100%</div>
-                <div class="f-stat-desc">Toda a área de plantio da fazenda é coberta por sensoriamento de solo e cima via satélite e dispositivos IoT.</div>
-                <button class="f-btn-explore">Ver Dashboard &rarr;</button>
+                <div class="f-icon-circle pulse-glow">⚙️</div>
+                <div class="f-stat-title">Tecnologia de Secagem</div>
+                <div class="f-stat-desc">Linha industrial de secadores mecânicos operando em fluxo contínuo, essencial para remover a umidade de forma homogênea e preservar os grãos.</div>
+                <button class="f-btn-explore">Ver Estrutura &rarr;</button>
               </div>
             </div>
 
             <!-- Card 3 -->
             <div class="future-glass-card">
-              <div class="f-card-bg" style="background-image: url('assets/media/gallery-1.jpg');"></div>
+              <div class="f-card-bg" style="background-image: url('assets/media/coffee-trees.jpg');"></div>
               <div class="f-card-overlay"></div>
               <div class="f-card-content">
                 <div class="f-icon-circle pulse-glow">☕</div>
-                <div class="f-stat-title">Espécie Arábica</div>
-                <div class="f-stat-desc">Cultivo puro focado na alta complexidade sensorial e padronização que as melhores torrefações globais exigem.</div>
-                <button class="f-btn-explore">Ver Variedades &rarr;</button>
+                <div class="f-stat-title">Produção Arábica</div>
+                <div class="f-stat-desc">Foco no cultivo de cafés da espécie arábica, entregando a padronização, o volume e a constância que as grandes operações do mercado exigem.</div>
+                <button class="f-btn-explore">Ver Qualidade &rarr;</button>
               </div>
             </div>
 
             <!-- Card 4 -->
             <div class="future-glass-card">
-              <div class="f-card-bg" style="background-image: url('assets/media/gallery-4.jpg');"></div>
+              <div class="f-card-bg" style="background-image: url('assets/media/resources-water.jpg');"></div>
               <div class="f-card-overlay"></div>
               <div class="f-card-content">
-                <div class="f-icon-circle pulse-glow">♻️</div>
-                <div class="f-stat-title">Carbono Neutro</div>
-                <div class="f-stat-desc">Manejos sustentáveis rigorosos que sequestram mais carbono do que nossa cadeia emite, garantindo biodiversidade.</div>
+                <div class="f-icon-circle pulse-glow">💧</div>
+                <div class="f-stat-title">Manejo de Recursos</div>
+                <div class="f-stat-desc">Operação integrada à biodiversidade, responsável pela preservação de importantes áreas de mata nativa (Reserva Legal) e gestão de recursos hídricos.</div>
                 <button class="f-btn-explore">Relatório ESG &rarr;</button>
               </div>
             </div>
@@ -237,14 +237,14 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
     .f-card-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(44, 59, 45, 0.45);
+      background: rgba(44, 59, 45, 0.35); /* Alterado de 0.45 para destacar a foto real da fazenda */
       backdrop-filter: blur(0px);
       -webkit-backdrop-filter: blur(0px);
       z-index: -1;
       transition: background 0.4s ease;
     }
     .future-glass-card:hover .f-card-overlay {
-      background: rgba(44, 59, 45, 0.7);
+      background: rgba(44, 59, 45, 0.6);
       backdrop-filter: blur(4px);
     }
 
