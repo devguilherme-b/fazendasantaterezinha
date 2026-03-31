@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
+  imports: [RouterLink, RouterModule],
   template: `
     <section id="inicio" class="hero-section">
       <!-- Dark minimal gradient overlay to make text pop naturally -->
@@ -29,7 +31,7 @@ import { Component } from '@angular/core';
           <p class="hero-lead">Produção de grãos premium com tecnologia preditiva e manejo inteligente aplicados de ponta a ponta: do solo mapeado até a perfeição em cada xícara.</p>
           
           <div class="hero-actions">
-            <a href="#historia" class="btn-glow-outline">Explorar Ecossistema <span>&rarr;</span></a>
+            <a routerLink="/historia" class="btn-glow-outline">Conhecer Nossa História <span>&rarr;</span></a>
           </div>
         </div>
 
@@ -45,16 +47,28 @@ import { Component } from '@angular/core';
           <div class="telemetry-block line-below">
             <div class="glow-indicator"></div>
             <div class="t-data">
-              <span class="t-val">24H</span>
-              <span class="t-label">TELEMETRIA</span>
+              <span class="t-val">+70 ANOS</span>
+              <span class="t-label">TRADIÇÃO</span>
             </div>
           </div>
         </div>
 
       </div>
+
+      <!-- Wave Separator to blend with the next section -->
+      <div class="hero-wave">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="#2C3B2D" fill-opacity="1" d="M0,224L60,202.7C120,181,240,139,360,117.3C480,96,600,96,720,122.7C840,149,960,203,1080,213.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+      </div>
     </section>
   `,
   styles: [`
+    :host {
+      --fst-color-highlight: #C8A96E;
+      --fst-transition-base: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
     .relative { position: relative; }
     
     .hero-section {
@@ -88,6 +102,26 @@ import { Component } from '@angular/core';
       z-index: 2;
     }
 
+    /* Wave styling */
+    .hero-wave {
+      position: absolute;
+      bottom: -1px; /* Overlap slightly to prevent pixel gaps */
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      z-index: 5;
+    }
+    .hero-wave svg {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: 100px;
+    }
+    .hero-wave .shape-fill {
+      fill: #2C3B2D; /* Same as about-wrapper background */
+    }
+
     /* Detalhes de "lentes/frame" para efeito mecânico/premium */
     .optic-frame-left, .optic-frame-right {
       position: absolute;
@@ -112,19 +146,18 @@ import { Component } from '@angular/core';
       position: relative;
       z-index: 10;
       width: 100%;
-      padding-top: 20px; /* Reduzido para subir o bloco */
-      padding-bottom: 15vh; /* Aumentado para empurrar bem para cima da onda */
+      padding-top: 20px;
+      padding-bottom: 5vh;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    /* TYPOGRAPHY DRIVEN CONTENT */
     .hero-content-pure {
       max-width: 650px;
       padding-left: 20px;
       animation: fadeRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-      border-left: 1px solid rgba(255,255,255,0.05); /* subtle anchor */
+      border-left: 1px solid rgba(255,255,255,0.05);
     }
 
     @keyframes fadeRight {
@@ -140,11 +173,11 @@ import { Component } from '@angular/core';
       padding-left: 20px;
     }
     .tech-badge-inline .badge-text {
-      font-family: var(--fst-font-secondary);
+      font-family: 'Jost', sans-serif;
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 3px;
-      color: rgba(255, 255, 255, 0.85); /* Clareado para máximo contraste */
+      color: rgba(255, 255, 255, 0.85);
       text-transform: uppercase;
     }
     .pulse-dot {
@@ -160,10 +193,10 @@ import { Component } from '@angular/core';
     }
 
     .future-title {
-      font-family: var(--fst-font-primary);
-      font-size: clamp(2.8rem, 4.5vw, 4.2rem); /* Diminui a escala horizontal do clamp */
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
       line-height: 1.05;
-      margin-bottom: 20px; /* Mais compacto */
+      margin-bottom: 20px;
       color: white;
       text-shadow: 0 10px 30px rgba(0,0,0,0.5);
       font-weight: 400;
@@ -171,8 +204,8 @@ import { Component } from '@angular/core';
     }
     .highlight-text {
       color: var(--fst-color-highlight);
-      font-style: italic; /* Dá um tom elegante/editorial */
-      padding-right: 15px; /* Evita corte da fonte itálica */
+      font-style: italic;
+      padding-right: 15px;
     }
 
     .accent-line {
@@ -180,17 +213,17 @@ import { Component } from '@angular/core';
       height: 2px;
       background: var(--fst-color-highlight);
       margin-left: 20px;
-      margin-bottom: 20px; /* Mais compacto */
+      margin-bottom: 20px;
       box-shadow: 0 0 10px rgba(200, 169, 110, 0.5);
     }
 
     .hero-lead {
-      font-family: var(--fst-font-secondary);
-      font-size: 1.05rem; /* Fonte ligeiramente menor */
+      font-family: 'Jost', sans-serif;
+      font-size: 1.05rem;
       font-weight: 300;
-      line-height: 1.6; /* Interlinha menor */
+      line-height: 1.6;
       color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 30px; /* Reduz a quebra até os botões */
+      margin-bottom: 30px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.5);
       padding-left: 20px;
     }
@@ -204,9 +237,9 @@ import { Component } from '@angular/core';
       gap: 12px;
       padding: 14px 32px;
       border: 1px solid rgba(200, 169, 110, 0.4);
-      border-radius: 4px; /* Mais técnico, menos bubble */
+      border-radius: 4px;
       color: white;
-      font-family: var(--fst-font-secondary);
+      font-family: 'Jost', sans-serif;
       font-size: 0.85rem;
       font-weight: 600;
       letter-spacing: 1.5px;
@@ -262,49 +295,30 @@ import { Component } from '@angular/core';
       gap: 4px;
     }
     .t-val {
-      font-family: var(--fst-font-primary);
+      font-family: 'Cormorant Garamond', serif;
       font-size: 2.2rem;
       line-height: 1;
       color: white;
       text-shadow: 0 2px 10px rgba(0,0,0,0.8);
     }
     .t-label {
-      font-family: var(--fst-font-secondary);
+      font-family: 'Jost', sans-serif;
       font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 2px;
       color: rgba(255, 255, 255, 0.6);
     }
 
-    /* RESPONSIVE */
     @media (max-width: 991px) {
-      .hero-section {
-        justify-content: center;
-      }
-      .hero-overlay {
-        background: radial-gradient(circle at center, rgba(15,23,18,0.4) 0%, rgba(15,23,18,0.9) 100%);
-      }
+      .hero-section { justify-content: center; }
+      .hero-overlay { background: radial-gradient(circle at center, rgba(15,23,18,0.4) 0%, rgba(15,23,18,0.9) 100%); }
       .optic-frame-left, .optic-frame-right { display: none; }
-      .hero-container {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-      }
-      .hero-content-pure {
-        border-left: none;
-        padding-left: 0;
-      }
+      .hero-container { flex-direction: column; justify-content: center; text-align: center; }
+      .hero-content-pure { border-left: none; padding-left: 0; }
       .future-title, .hero-lead { padding-left: 0; }
       .accent-line { margin: 0 auto 30px auto; }
       .tech-badge-inline, .hero-actions { padding-left: 0; justify-content: center; }
-      
-      .hero-telemetry-sidebar {
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 60px;
-        padding-right: 0;
-        gap: 30px;
-      }
+      .hero-telemetry-sidebar { flex-direction: row; justify-content: center; margin-top: 60px; padding-right: 0; gap: 30px; }
     }
   `]
 })

@@ -1,13 +1,15 @@
 import { Component, HostListener, signal } from '@angular/core';
+import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
+  imports: [RouterLink, RouterLinkActive, RouterModule],
   template: `
     <header [class.scrolled]="isScrolled()">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-4">
-          <a class="navbar-brand" href="#">Fazenda Santa Terezinha</a>
+          <a class="navbar-brand" routerLink="/">Fazenda Santa Terezinha</a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,23 +19,23 @@ import { Component, HostListener, signal } from '@angular/core';
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#inicio">Início</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="inicio" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Início</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#historia">Nossa História</a>
+                <a class="nav-link" routerLink="/historia" routerLinkActive="active">Nossa História</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#estrutura">Estrutura</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="estrutura" routerLinkActive="active">Estrutura</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#localizacao">Localização</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="localizacao" routerLinkActive="active">Localização</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#fotos">Fotos</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="fotos" routerLinkActive="active">Fotos</a>
               </li>
             </ul>
             <div class="nav-actions d-flex">
-              <a href="#contato" class="btn-primary" style="padding: 10px 20px; font-size: 1rem;">Contato</a>
+              <a [routerLink]="['/']" fragment="contato" class="btn-primary" style="padding: 10px 20px; font-size: 1rem;">Contato</a>
             </div>
           </div>
         </div>
@@ -84,6 +86,7 @@ import { Component, HostListener, signal } from '@angular/core';
       font-weight: 700;
       color: white !important;
       transition: color var(--fst-transition-base);
+      text-decoration: none;
     }
     header.scrolled .navbar-brand {
       color: var(--fst-color-highlight) !important;
@@ -107,7 +110,8 @@ import { Component, HostListener, signal } from '@angular/core';
       background-color: var(--fst-color-highlight);
       transition: width var(--fst-transition-base);
     }
-    .navbar-nav .nav-link:hover::after {
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
       width: 100%;
     }
 
@@ -141,7 +145,7 @@ import { Component, HostListener, signal } from '@angular/core';
       .navbar-collapse {
         background: var(--fst-color-primary);
         padding: 24px;
-        border-radius: 12px;
+        border-radius: 12px; 
         margin-top: 16px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
       }

@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-crops',
   standalone: true,
+  imports: [CommonModule, RouterLink],
   template: `
-    <section id="estrutura" class="future-crops-section section-padding">
-      <!-- tech grid background -->
+    <section id="estrutura" class="future-crops-section relative">
+      <!-- ambient backdrop -->
+      <div class="ambient-glow"></div>
       <div class="crops-tech-grid"></div>
 
-      <div class="container relative">
-        <div class="text-center">
-          <div class="tech-badge mx-auto">
-            <span class="pulse-dot"></span> ECOSSISTEMA PRODUTIVO
+      <div class="container relative z-10">
+        <div class="header-center">
+          <div class="tech-badge">
+            <span class="pulse-dot"></span> 
+            ECOSSISTEMA PRODUTIVO // ESTRUTURA
           </div>
-          <h2 class="gradient-title-light">Excelência em <span>Larga Escala</span></h2>
-          <p class="subtitle-tech">Do preparo meticuloso do solo à secagem de precisão, nossa infraestrutura é desenhada para aliar expansão produtiva com consistência de qualidade.</p>
+          <h2 class="section-title">Excelência em <span class="gold">Larga Escala</span></h2>
+          <p class="section-subtitle">Infraestrutura desenhada para aliar produtividade com consistência de qualidade, do solo à xícara.</p>
         </div>
         
         <div class="crops-glass-grid">
@@ -28,11 +33,11 @@ import { Component } from '@angular/core';
             </div>
             <div class="card-tech-content">
               <div class="tech-icon-wrapper">
-                 <div class="tech-icon-hex">🚜</div>
+                <div class="tech-icon-hex">🚜</div>
               </div>
               <h3>Manejo e Plantio Moderno</h3>
-              <p>Uso intensivo de mecanização e agricultura de precisão. Lavouras desenhadas em curva de nível para proteção do solo, com renovação contínua utilizando mudas sadias e tratos culturais rigorosos.</p>
-              <a href="#historia" class="tech-link">Ver detalhes &rarr;</a>
+              <p>Mecanização avançada e agricultura de precisão. Lavouras protegidas e renovadas com mudas sadias, garantindo solo fértil e produção sustentável.</p>
+              <a [routerLink]="['/']" fragment="localizacao" (click)="scrollToSection('localizacao')" class="tech-link">Conheça nosso manejo &rarr;</a>
             </div>
           </div>
           
@@ -45,11 +50,11 @@ import { Component } from '@angular/core';
             </div>
             <div class="card-tech-content">
               <div class="tech-icon-wrapper">
-                 <div class="tech-icon-hex">⚙️</div>
+                <div class="tech-icon-hex">⚙️</div>
               </div>
               <h3>Beneficiamento de Alta Capacidade</h3>
-              <p>Estrutura robusta contando com amplos terreiros pavimentados e uma bateria completa de grandes secadores mecânicos, garantindo fluxo contínuo e padronização para volumes expressivos de café.</p>
-              <a href="#historia" class="tech-link">Ver detalhes &rarr;</a>
+              <p>Estrutura equipada com terreiros pavimentados e secadores mecânicos de fluxo contínuo, assegurando padronização total para exportação.</p>
+              <a [routerLink]="['/']" fragment="localizacao" (click)="scrollToSection('localizacao')" class="tech-link">Veja a tecnologia &rarr;</a>
             </div>
           </div>
           
@@ -58,83 +63,84 @@ import { Component } from '@angular/core';
     </section>
   `,
   styles: [`
-    .relative { position: relative; z-index: 10; }
-    
+    :host {
+      --fst-green-musgo: #2C3B2D;
+      --fst-gold: #C8A96E;
+      --fst-marfim: #F5EDD9;
+      --fst-green-oliva: #4A5C3A;
+    }
+
     .future-crops-section {
-      background-color: var(--fst-color-bg-tertiary); /* Fundo Deep-Brown/Green */
-      color: white;
+      background-color: #0b120c;
+      color: var(--fst-marfim);
       position: relative;
       overflow: hidden;
-      padding: 120px 0;
+      padding: 140px 0;
+    }
+
+    .ambient-glow {
+      position: absolute;
+      top: 0; right: 0;
+      width: 60vw; height: 60vw;
+      background: radial-gradient(circle, rgba(200,169,110,0.04) 0%, transparent 70%);
+      pointer-events: none;
     }
     
-    /* TECH GRID BG */
     .crops-tech-grid {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
       background-image: 
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      z-index: 1;
+        linear-gradient(rgba(200, 169, 110, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200, 169, 110, 0.02) 1px, transparent 1px);
+      background-size: 50px 50px;
     }
 
-    .text-center {
+    .header-center {
       text-align: center;
-      margin-bottom: 70px;
+      margin-bottom: 80px;
     }
 
-    /* BADGE OVERRIDE FOR DARK BG */
     .tech-badge {
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(200, 169, 110, 0.05);
+      border: 1px solid rgba(200, 169, 110, 0.2);
       padding: 8px 18px;
-      border-radius: 30px;
-      font-family: var(--fst-font-secondary);
+      font-family: 'Jost', sans-serif;
       font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      color: var(--fst-color-highlight);
-      margin-bottom: 24px;
+      letter-spacing: 3px;
+      color: var(--fst-gold);
+      margin-bottom: 30px;
     }
     .pulse-dot {
       width: 8px; height: 8px;
-      background-color: var(--fst-color-highlight);
+      background-color: var(--fst-gold);
       border-radius: 50%;
-      box-shadow: 0 0 10px var(--fst-color-highlight);
+      box-shadow: 0 0 10px var(--fst-gold);
       animation: pulse 2s infinite ease-in-out;
     }
-    .blue-dot {
-      color: #60A5FA !important;
-    }
+    .blue-dot { color: #60A5FA !important; }
+    
     @keyframes pulse {
       0%, 100% { transform: scale(1); opacity: 1; }
       50% { transform: scale(1.6); opacity: 0.4; }
     }
 
-    .gradient-title-light {
-      font-family: var(--fst-font-primary);
-      font-size: 3.5rem;
-      line-height: 1.2;
-      margin-bottom: 24px;
-      color: white;
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      color: #fff;
+      margin-bottom: 20px;
     }
-    .gradient-title-light span {
-      background: linear-gradient(90deg, #FFFFFF 0%, var(--fst-color-highlight) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .gold { color: var(--fst-gold); font-style: italic; }
     
-    .subtitle-tech {
-      font-family: var(--fst-font-secondary);
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 1.25rem;
-      max-width: 650px;
+    .section-subtitle {
+      font-family: 'Jost', sans-serif;
+      color: rgba(245, 237, 217, 0.6);
+      font-size: 1.2rem;
+      max-width: 700px;
       margin: 0 auto;
-      font-weight: 300;
       line-height: 1.6;
     }
 
@@ -142,125 +148,105 @@ import { Component } from '@angular/core';
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 40px;
-      position: relative;
     }
 
-    /* CARDS */
     .glass-crop-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.02);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 20px;
       overflow: hidden;
+      transition: all 0.5s ease;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: all var(--fst-transition-base);
     }
     .glass-crop-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(200, 169, 110, 0.3);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 0 20px rgba(255, 255, 255, 0.02);
+      transform: translateY(-10px);
+      border-color: rgba(200, 169, 110, 0.2);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .card-image-wrapper {
       position: relative;
-      height: 280px;
+      height: 300px;
       overflow: hidden;
     }
     .card-image-wrapper img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
-      transition: transform 0.8s ease;
+      opacity: 0.75;
+      transition: all 0.8s ease;
     }
     .glass-crop-card:hover .card-image-wrapper img {
+      opacity: 0.9;
       transform: scale(1.05);
     }
     .hologram-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(180deg, rgba(44,59,45,0) 40%, rgba(44,59,45,0.7) 100%);
-      pointer-events: none;
+      background: linear-gradient(to bottom, transparent, rgba(11, 18, 12, 0.8));
     }
     .status-tab {
       position: absolute;
-      top: 20px; right: 20px;
+      top: 25px; right: 25px;
       background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.15);
       padding: 6px 14px;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: rgba(255,255,255,0.9);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .status-tab span {
-      color: #10B981; /* Neon green indicator */
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-family: monospace;
+      color: #fff;
+      display: flex; align-items: center; gap: 8px;
     }
 
     .card-tech-content {
-      padding: 40px 32px 40px 32px;
+      padding: 50px 40px;
       position: relative;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
     }
     .tech-icon-wrapper {
       position: absolute;
-      top: -28px; left: 32px;
-      width: 56px; height: 56px;
-      background: var(--fst-color-bg-tertiary);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.4);
-      z-index: 10;
-    }
-    .tech-icon-hex {
-      font-size: 1.5rem;
+      top: -30px; left: 40px;
+      width: 60px; height: 60px;
+      background: #1a231b;
+      border: 1px solid var(--fst-gold);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.4);
     }
 
     .card-tech-content h3 {
-      font-family: var(--fst-font-primary);
-      font-size: 2rem;
-      color: var(--fst-color-highlight);
-      margin-top: 8px;
-      margin-bottom: 16px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--fst-gold);
     }
     .card-tech-content p {
-      color: rgba(255, 255, 255, 0.7);
-      line-height: 1.7;
+      font-family: 'Jost', sans-serif;
       font-size: 1rem;
-      margin-bottom: 24px;
-      flex-grow: 1;
+      line-height: 1.7;
+      color: rgba(245, 237, 217, 0.7);
+      margin-bottom: 30px;
     }
     .tech-link {
-      color: var(--fst-color-highlight);
-      font-family: var(--fst-font-secondary);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
       text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--fst-gold);
       text-decoration: none;
-      align-self: flex-start;
-      transition: color var(--fst-transition-base);
+      transition: all 0.3s ease;
     }
-    .tech-link:hover {
-      color: white;
-    }
+    .tech-link:hover { color: #fff; transform: translateX(5px); }
 
     @media (max-width: 768px) {
       .crops-glass-grid { grid-template-columns: 1fr; }
-      .gradient-title-light { font-size: 2.8rem; }
+      .card-tech-content { padding: 40px 30px; }
     }
   `]
 })
-export class CropsComponent {}
+export class CropsComponent {
+  scrollToSection(id: string) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+}
