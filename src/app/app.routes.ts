@@ -3,5 +3,6 @@ import { HomeComponent } from './components/home.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'historia', loadComponent: () => import('./components/history.component').then(m => m.HistoryComponent) }
+  { path: 'historia', loadComponent: () => import('./components/history.component').then(m => m.HistoryComponent) },
+  { path: 'fotos', loadComponent: () => import('./components/photos.component').then(m => m.PhotosComponent) }
 ];

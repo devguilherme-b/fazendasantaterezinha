@@ -100,8 +100,14 @@ import { CommonModule } from '@angular/common';
                 </div>
               </div>
             </div>
-
           </div>
+        </div>
+
+        <!-- Wavy Transition to Footer -->
+        <div class="wave-bottom">
+          <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,32L60,42.7C120,53,240,75,360,74.7C480,75,600,53,720,48C840,43,960,53,1080,58.7C1200,64,1320,64,1380,64L1440,64L1440,120L1380,120C1320,120,1200,120,1080,120C960,120,840,120,720,120C600,120,480,120,360,120C240,120,120,120,60,120L0,120Z"></path>
+          </svg>
         </div>
       </section>
     </div>
@@ -117,8 +123,26 @@ import { CommonModule } from '@angular/common';
       --fst-cafe: #8B6340;
     }
 
+    /* wave-bottom */
+    .wave-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      z-index: 10;
+    }
+    .wave-bottom svg {
+      display: block;
+      width: 100%;
+      height: 100px;
+    }
+    .wave-bottom path {
+      fill: #0b120c;
+    }
+
     .about-wrapper {
-      background: var(--fst-green-musgo);
+      background: var(--fst-color-primary);
       color: var(--fst-marfim);
       overflow: hidden;
       position: relative;

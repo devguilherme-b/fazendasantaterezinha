@@ -67,13 +67,45 @@ import { CommonModule } from '@angular/common';
         </div>
       </section>
 
-      <!-- CALL TO ACTION / VISION -->
-      <section class="history-footer">
-        <div class="container text-center">
-          <div class="vision-badge">NOSSA VISÃO</div>
-          <h2>"Alimentando o mundo com excelência e tradição."</h2>
+      <!-- PILLARS OF EXCELLENCE (MISSION, VISION, VALUES) -->
+      <section class="pillars-section container">
+        <div class="pillars-grid">
+          
+          <!-- MISSÃO -->
+          <div class="pillar-card">
+            <div class="pillar-header">
+              <span class="pillar-number">M</span>
+              <h4>Missão</h4>
+            </div>
+            <p>Cultivar e produzir de forma ética e sustentável, contribuindo para o desenvolvimento regional e o bem estar das pessoas.</p>
+          </div>
+
+          <!-- VISÃO -->
+          <div class="pillar-card">
+            <div class="pillar-header">
+              <span class="pillar-number">V</span>
+              <h4>Visão</h4>
+            </div>
+            <p>Ser referência na produção de café, através de boas práticas de gestão, qualidade e avançadas técnicas de produção.</p>
+          </div>
+
+          <!-- VALORES -->
+          <div class="pillar-card gold-border">
+            <div class="pillar-header">
+              <span class="pillar-number">V</span>
+              <h4>Valores</h4>
+            </div>
+            <p>Integridade, Comprometimento, Inovação, Sustentabilidade, Responsabilidade Social e Valores Cristãos.</p>
+          </div>
+
         </div>
+        
       </section>
+      <div class="wave-bottom">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none">
+          <path fill="var(--fst-marfim)" fill-opacity="1" d="M0,224L60,202.7C120,181,240,139,360,117.3C480,96,600,96,720,122.7C840,149,960,203,1080,213.3C1200,224,1320,192,1380,176L1440,160L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+        </svg>
+      </div>
     </div>
   `,
   styles: [`
@@ -153,6 +185,9 @@ import { CommonModule } from '@angular/common';
       gap: 60px;
       margin-bottom: 150px;
       align-items: center;
+      animation: fadeRight 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 30%;
     }
     .story-block.reverse {
       grid-template-columns: 1fr 1fr 80px;
@@ -197,26 +232,73 @@ import { CommonModule } from '@angular/common';
       transform: scale(1.02);
     }
 
-    /* FOOTER CALL */
-    .history-footer {
-      padding: 150px 0;
-      background: linear-gradient(to top, rgba(200, 169, 110, 0.05), transparent);
+    /* PILLARS SECTION */
+    .pillars-section {
+      padding: 100px 15px;
+      margin-bottom: 50px;
     }
-    .vision-badge {
-      display: inline-block;
-      padding: 10px 25px;
-      border: 1px solid var(--fst-gold);
-      color: var(--fst-gold);
-      font-size: 0.8rem;
-      letter-spacing: 3px;
-      margin-bottom: 30px;
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
     }
-    .history-footer h2 {
+    .pillar-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      transition: all 0.4s ease;
+    }
+    .pillar-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      transform: translateY(-8px);
+    }
+    .pillar-card.gold-border {
+      border: 1px solid rgba(200, 169, 110, 0.2);
+    }
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+    .pillar-number {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 2.5rem;
-      font-style: italic;
-      max-width: 800px;
-      margin: 0 auto;
+      font-size: 1.5rem;
+      color: var(--fst-gold);
+      opacity: 0.6;
+    }
+    .pillar-card h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+    .pillar-card p {
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(245, 237, 217, 0.7);
+    }
+
+    /* wave bottom */
+
+    .wave-bottom {
+      position: relative;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+      z-index: 10;
+    }
+    .wave-bottom svg {
+      display: block;
+      width: 100%;
+      height: 100px;
+    }
+    .wave-bottom path {
+      fill: var(--fst-marfim);
     }
 
     @media (max-width: 991px) {
@@ -228,6 +310,7 @@ import { CommonModule } from '@angular/common';
         gap: 30px;
       }
       .block-number { display: none; }
+      .pillars-grid { grid-template-columns: 1fr; }
     }
   `]
 })

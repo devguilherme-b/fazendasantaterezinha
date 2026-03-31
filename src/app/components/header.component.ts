@@ -9,7 +9,9 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
     <header [class.scrolled]="isScrolled()">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid px-4">
-          <a class="navbar-brand" routerLink="/">Fazenda Santa Terezinha</a>
+          <a class="navbar-brand d-flex align-items-center" [routerLink]="['/']">
+            <img src="assets/media/logo-header.png" alt="Fazenda Santa Terezinha Logo" class="brand-logo" />
+          </a>
           
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,13 +27,13 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
                 <a class="nav-link" routerLink="/historia" routerLinkActive="active">Nossa História</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']" fragment="estrutura" routerLinkActive="active">Estrutura</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="estrutura" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Estrutura</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']" fragment="localizacao" routerLinkActive="active">Localização</a>
+                <a class="nav-link" [routerLink]="['/']" fragment="localizacao" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Localização</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/']" fragment="fotos" routerLinkActive="active">Fotos</a>
+                <a class="nav-link" routerLink="/fotos" routerLinkActive="active">Fotos</a>
               </li>
             </ul>
             <div class="nav-actions d-flex">
@@ -56,22 +58,35 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
       content: '';
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(255, 255, 255, 0.05); 
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: rgba(245, 237, 217, 0.70); /* Glass Marfim */
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border-radius: inherit;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(44, 59, 45, 0.08);
       transition: all var(--fst-transition-base);
       z-index: -1;
       pointer-events: none;
     }
     header.scrolled::before {
-      background: rgba(44, 59, 45, 0.85); /* var(--fst-color-primary) with opacity */
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(245, 237, 217, 0.85); /* Slightly more solid when scrolled */
+      box-shadow: 0 4px 30px rgba(0,0,0,0.1);
+      border: 1px solid rgba(44, 59, 45, 0.05);
     }
     
+    .wave-bottom {
+      position: absolute;
+      bottom: -100px;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      z-index: -2;
+    }
+    .wave-bottom svg {
+      width: 100%;
+      height: 100%;
+    }
+
     .navbar {
       padding: 12px 0;
       transition: padding var(--fst-transition-base);
@@ -79,27 +94,39 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
     header.scrolled .navbar {
       padding: 8px 0;
     }
-
+ 
     .navbar-brand {
-      font-family: var(--fst-font-primary);
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: white !important;
-      transition: color var(--fst-transition-base);
-      text-decoration: none;
+      padding: 0;
+      margin-right: 2rem;
+      transition: opacity var(--fst-transition-base);
     }
-    header.scrolled .navbar-brand {
-      color: var(--fst-color-highlight) !important;
+    .navbar-brand:hover {
+      opacity: 0.8;
     }
-
+    .brand-logo {
+      height: 60px;
+      width: auto;
+      object-fit: contain;
+      transition: all var(--fst-transition-base);
+      /* Balanced filter for glass effect */
+      filter: drop-shadow(0 0 4px rgba(0,0,0,0.15)) brightness(1.1);
+    }
+    header.scrolled .brand-logo {
+      height: 50px;
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.1));
+    }
+ 
     .navbar-nav .nav-link {
-      color: white !important;
-      font-weight: 500;
+      color: var(--fst-green-musgo) !important;
+      font-weight: 600;
       font-size: 1.05rem;
       position: relative;
       margin: 0 12px;
+      padding: 10px 0;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
       transition: color var(--fst-transition-base);
     }
+
     .navbar-nav .nav-link::after {
       content: '';
       position: absolute;
@@ -107,20 +134,37 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
       height: 2px;
       bottom: 0;
       left: 0;
-      background-color: var(--fst-color-highlight);
-      transition: width var(--fst-transition-base);
+      background-color: currentColor;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 100;
     }
-    .navbar-nav .nav-link:hover::after,
+    
+    /* Hover state for Anchors: 50% */
+    .navbar-nav .nav-link[fragment]:hover::after {
+      width: 100%;
+    }
+    
+    /* Clicked/Active State: ALWAYS 100% */
     .navbar-nav .nav-link.active::after {
+      width: 100% !important;
+    }
+    
+    /* Page Hover: 100% */
+    .navbar-nav .nav-link:not([fragment]):hover::after {
       width: 100%;
     }
 
-    /* Override Bootstrap Toggler for dark/transparent background */
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: var(--fst-gold) !important;
+    }
+ 
+    /* Override Bootstrap Toggler for light background */
     .navbar-toggler {
-      border-color: rgba(255, 255, 255, 0.5);
+      border-color: rgba(44, 59, 45, 0.3);
     }
     .navbar-toggler-icon {
-      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2844, 59, 45, 0.85%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
     }
     .navbar-toggler:focus {
       box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.25);
@@ -138,9 +182,8 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
       header::before {
         border-radius: 0;
         border: none;
-        /* Fade out na borda inferior para mesclar com o background */
-        -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
-        mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        background: var(--fst-color-bg-primary); /* Preenchimento completo com a cor do marfim */
+        box-shadow: 0 2px 15px rgba(0,0,0,0.06);
       }
       .navbar-collapse {
         background: var(--fst-color-primary);
@@ -149,11 +192,18 @@ import { RouterLink, RouterLinkActive, RouterModule } from '@angular/router';
         margin-top: 16px;
         box-shadow: 0 4px 20px rgba(0,0,0,0.5);
       }
-      .navbar-nav .nav-link {
-        margin: 8px 0;
+      header .navbar-nav .nav-link,
+      header .navbar-nav .nav-link.active,
+      header .navbar-nav .nav-link:hover {
+        color: var(--fst-color-bg-primary) !important; /* Branco puro para contraste total no fundo verde */
+        text-shadow: none !important;
+        margin: 12px 0;
+      }
+      .brand-logo {
+        height: 42px;
       }
       .nav-actions {
-        margin-top: 16px;
+        margin-top: 20px;
       }
     }
   `]

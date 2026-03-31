@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
                 <div class="icon-box">📍</div>
                 <div class="text-box">
                   <label>Endereço</label>
-                  <p>Fazenda Santa Terezinha, Zona Rural<br>Dourado - SP, CEP: 13590-000</p>
+                  <p>Fazenda Santa Terezinha, Zona Rural<br>Trabiju - SP, CEP: 14935-000</p>
                 </div>
               </div>
 
@@ -30,7 +30,7 @@ import { CommonModule } from '@angular/common';
                 <div class="icon-box">📞</div>
                 <div class="text-box">
                   <label>Telefone</label>
-                  <a href="tel:+5516999999999" class="contact-link">+55 (16) 99999-9999</a>
+                  <a href="tel:+5516997560109" class="contact-link">+55 (16) 99756-0109</a>
                 </div>
               </div>
 
